@@ -11,18 +11,46 @@
   </head>
 
  <header>
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "ログイン", new_admin_session_path %>
-      </li>
-    <% end %>
+    <nav class="navbar navbar-expand-lg border-bottom border-dark">
+      <div class="container">
+        <% if admin_signed_in? %>
+        <li>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+        <% else %>
+         <div class="row">
+        <li class="list-unstyled">
+          <h1>LOGO</h1>
+        </li>
+        </div>
+
+        <div class="row">
+        <ul class="navbar-nav pull-right">
+          <button type="button" class="btn btn-outline-secondary">
+            <%= link_to "About",home_about_path, class: "text-dark" %>
+          </button>
+          <button type="button" class="btn btn-outline-secondary">
+            <%= link_to "商品一覧",home_about_path, class: "text-dark" %>
+          </button>
+          <button type="button" class="btn btn-outline-secondary">
+            <%= link_to "新規登録",home_about_path, class: "text-dark" %>
+          </button>
+          <button type="button" class="btn btn-outline-secondary">
+            <%= link_to "ログイン", new_admin_session_path, class: "text-dark" %>
+          </button>
+        </ul>
+        </div>
+        <% end %>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <body>
     <%= yield %>
   </body>
+
+      <footer>
+      <div class="container mt-5 border-top border-dark"></div>
+      </footer>
 </html>
