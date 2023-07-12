@@ -14,9 +14,49 @@
     <nav class="navbar navbar-expand-lg border-bottom border-dark">
       <div class="container">
         <% if admin_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+         <div class="row">
+        <li class="list-unstyled">
+          <h1>LOGO</h1>
         </li>
+        </div>
+        <div class="row">
+        <ul class="navbar-nav pull-right">
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "会員一覧", home_about_path %>
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "商品一覧", home_about_path %>
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "注文履歴一覧", home_about_path %>
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </button>
+        </ul>
+        </div>
+        <% elsif customer_signed_in? %>
+         <div class="row">
+        <li class="list-unstyled">
+          <h1>LOGO</h1>
+        </li>
+        </div>
+        <div class="row">
+        <ul class="navbar-nav pull-right">
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "マイページ", home_about_path %>
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "商品一覧", home_about_path %>
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "カート", home_about_path %>
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+        </button>
+        </ul>
+        </div>
         <% else %>
          <div class="row">
         <li class="list-unstyled">
