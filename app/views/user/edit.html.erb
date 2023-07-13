@@ -1,2 +1,46 @@
 <h1>Customer#edit</h1>
 <p>Find me in app/views/customer/edit.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <h5><strong>会員情報編集</strong></h5>
+  </div>
+
+  <div class="row col-7">
+    <table class="table table-borderless">
+      <%= form_with model: @customer do |f| %>
+      <tr>
+        <th class="col">氏名</th>
+        <td class="col"><%= f.text_field :last_name %></td>
+        <td class="col"><%= f.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <th class="col">カナ</th>
+        <td class="col"><%= f.text_field :last_name_kana %></td>
+        <td class="col"><%= f.text_field :first_name_kana %></td>
+      </tr>
+      <tr>
+        <th class="col">郵便番号</th>
+        <td class="col"><%= f.text_field :postal_code %></td>
+      </tr>
+      <tr>
+        <th class="col">住所</th>
+        <td class="col"><%= f.text_field :address%></td>
+      </tr>
+      <tr>
+        <th class="col">電話番号</th>
+        <td class="col"><%= f.text_field :telephone_number %></td>
+      </tr>
+      <tr>
+        <th class="col">メールアドレス</th>
+        <td class="col"><%= f.text_field :email %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-3"><%= f.submit "編集内容を保存" %></div>
+    <div class="col-2"><%= f.submit "退会" %></div>
+  </div>
+      <% end %>
+
+</div>
