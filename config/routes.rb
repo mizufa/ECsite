@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'items/index'
+    get 'items/new'
+    get 'items/show'
+    get 'items/edit'
+  end
   devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -18,10 +24,12 @@ Rails.application.routes.draw do
     get "/customers/unsubscribe" => "customers#unsubscribe" #退会確認画面へのルーティング
     patch "/customers/withdraw" => "customers#withdraw" #退会処理へのルーティング
     resources :customers, only: [:show, :edit, :update]
+    resources :items, only: [:show, :index]
   end
 
   namespace :admin do #権限付き、urlに権限名がつく。
     resources :customers
+    resources :items
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

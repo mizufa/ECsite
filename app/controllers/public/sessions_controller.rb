@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :customer_state, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -28,10 +29,8 @@ def customer_state
   return if !@customer
   ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
   ## ユーザー情報.valid_password?(入力されたパスワード)
-  if @customer.valid_password?(params[:customer][:encrypted_password]) && (@customer.is_dereted == true)
+  if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
     redirect_to new_customer_registration_path
-  else
-    redirect_to customer_session_path
   end
 end
 
