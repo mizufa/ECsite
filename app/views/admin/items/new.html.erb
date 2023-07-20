@@ -6,7 +6,7 @@
     <h5>商品新規登録</h5>
   </div>
 
-<%= form_with model: @item do |f| %>
+<%= form_with model: @item, url: '/admin/items/',method: :post do |f| %>
   <div class="row">
     <div class="col-1">
       <p>商品画像</p>

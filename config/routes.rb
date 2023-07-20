@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   namespace :admin do #権限付き、urlに権限名がつく。
     resources :customers
-    resources :items
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

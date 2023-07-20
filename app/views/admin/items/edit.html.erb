@@ -1,2 +1,53 @@
 <h1>Admin::Items#edit</h1>
 <p>Find me in app/views/admin/items/edit.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <h5>商品編集</h5>
+  </div>
+
+<%= form_with model: @item, url: "/admin/items/#{@item.id}", method: :patch do |f| %>
+  <div class="row">
+    <div class="col-1">
+      <p>商品画像</p>
+    </div>
+    <div class="col-1">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      <p>商品名</p>
+    </div>
+    <div class="col-1">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      <p>商品説明</p>
+    </div>
+    <div class="col-1">
+      <%= f.text_area :introduction %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      <p>税抜価格</p>
+    </div>
+    <div class="col-1">
+      <%= f.text_field :purchase_price %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= f.submit '変更を保存' %>
+    </div>
+  </div>
+<% end %>
+
+</div>
