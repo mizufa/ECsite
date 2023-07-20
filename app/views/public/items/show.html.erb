@@ -1,1 +1,15 @@
 <h1>Public::Items#show</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= image_tag @item.get_image %>
+    </div>
+    <div class="col">
+      <p><%= @item.name %></p>
+      <p><%= @item.introduction %></p>
+      <p>￥<%= @item.purchase_price %>(税込)</p>
+    </div>
+  </div>
+
+</div>

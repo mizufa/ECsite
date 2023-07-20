@@ -5,33 +5,20 @@
     <div class="col-2">
       <h5>商品一覧</h5>
     </div>
+  </div>
 
-    <%= link_to new_admin_item_path do %>
-    <div class="col-2 float-start">
-      <i class="fas fa-plus"></i>
-    </div>
-    <% end %>
- </div>
 
   <div class="row justify-content-center">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>商品ID</th>
-          <th>商品名</th>
-          <th>税抜価格</th>
-        </tr>
-      </thead>
-<% @items.each do |item| %>
-      <tbody>
-        <tr>
-          <td><%= item.id %></td>
-          <td><%= item.name %></td>
-          <td><%= item.purchase_price %></td>
-        </tr>
-      </tbody>
-<% end %>
-    </table>
+  <% @items.each do |item| %>
+    <%= link_to item_path(item.id) do %>
+    <div class="col">
+      <%= image_tag item.get_image %><br>
+      <%= item.name %><br>
+      ¥<%= item.purchase_price %>
+    </div>
+    <% end %>
+  <% end %>
   </div>
+
 
 </div>
