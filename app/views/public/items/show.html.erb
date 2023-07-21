@@ -9,6 +9,17 @@
       <p><%= @item.name %></p>
       <p><%= @item.introduction %></p>
       <p>￥<%= @item.purchase_price %>(税込)</p>
+
+    <%= form_with model: @cart_item do |f| %>
+    <span>
+      <%= f.select :amount, *[1..10] %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+    </span>
+    <span>
+      <%= f.submit 'カートに入れる' %>
+    </span>
+    <% end %>
+
     </div>
   </div>
 
