@@ -4,9 +4,8 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-2">
-      <h5>会員一覧</h5>
-    </div>
+    <h5>会員一覧</h5>
+  </div>
 
   <% @cusotmers.each do |customer| %>
   <div class="row">
@@ -18,11 +17,13 @@
         <th>ステータス</th>
       </thead>
       <tbody>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= customer.id %></td>
+        <td><%= customer.last_name %><%= customer.first_name %></td>
+        <td><%= customer.email %></td>
         <td></td>
       </tbody>
     </table>
   </div>
   <% end %>
+
+</div>

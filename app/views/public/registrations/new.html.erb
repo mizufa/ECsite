@@ -5,10 +5,9 @@
 </div>
 
 <div class="row justify-content-center">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <table class="table-sm table-borderless">
 <tbody>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
   <tr class="field">
@@ -64,10 +63,9 @@
     <th></th>
     <td><%= f.submit "新規登録" %></td>
   </tr>
-<% end %>
 </tbody>
 </table>
-
+<% end %>
 </div>
 </div>
 

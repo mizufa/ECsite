@@ -1,2 +1,101 @@
 <h1>Admin::Customers#show</h1>
 <p>Find me in app/views/admin/customers/show.html.erb</p>
+
+<div class="container">
+
+    <div class="col-4">
+      <h5><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h5>
+    </div>
+
+  <div class="row">
+    <div class="col-1">
+      会員ID
+    </div>
+    <div class="col-1">
+      <%= @customer.id %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      氏名
+    </div>
+    <div class="col-1">
+      <%= @customer.first_name %>
+    </div>
+    <div class="col-1">
+      <%= @customer.last_name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      フリガナ
+    </div>
+    <div class="col-1">
+      <%= @customer.first_name_kana %>
+    </div>
+    <div class="col-1">
+      <%= @customer.last_name_kana %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      郵便番号
+    </div>
+    <div class="col-1">
+      <%= @customer.postal_code %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      住所
+    </div>
+    <div class="col-1">
+      <%= @customer.address %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      電話番号
+    </div>
+    <div class="col-1">
+      <%= @customer.telephone_number %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      メールアドレス
+    </div>
+    <div class="col-1">
+      <%= @customer.email %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      会員ステータス
+    </div>
+    <div class="col-1">
+      <%= @customer.is_deleted %>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-2">
+        <%= link_to edit_admin_customer_path(@customer.id) do %>
+          <button type="button" class="btn btn-success">編集する</button>
+        <% end %>
+      </div>
+      <div class="col-3">
+        <%= link_to root_path do %>
+          <button type="button" class="btn btn-primary">注文履歴一覧を見る</button>
+        <% end %>
+      </div>
+  </div>
+
+</div>
