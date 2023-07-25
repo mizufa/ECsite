@@ -32,4 +32,5 @@ class Admin::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :image, :introduction, :purchase_price)
   end
+
 end

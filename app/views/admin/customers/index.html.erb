@@ -7,7 +7,7 @@
     <h5>会員一覧</h5>
   </div>
 
-  <% @cusotmers.each do |customer| %>
+  <% @customers.each do |customer| %>
   <div class="row">
     <table class="table">
       <thead>
@@ -20,7 +20,7 @@
         <td><%= customer.id %></td>
         <td><%= customer.last_name %><%= customer.first_name %></td>
         <td><%= customer.email %></td>
-        <td></td>
+        <td><%= customer.is_deleted %></td>
       </tbody>
     </table>
   </div>
