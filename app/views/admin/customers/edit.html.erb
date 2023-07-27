@@ -3,10 +3,13 @@
 
 <div class="container">
 
-  <div class="col-4">
-    <h5><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h5>
+  <div class="row">
+    <div class="col-4">
+      <h5><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h5>
+    </div>
   </div>
 
+<%= form_with model: @customer, method: :patch do |f| %>
   <div class="row">
     <div class="col-1">
       会員ID
@@ -21,9 +24,10 @@
       氏名
     </div>
     <div class="col-1">
-        <!-- f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前 -->
+      <%= f.text_field :last_name %>
     </div>
     <div class="col-1">
+      <%= f.text_field :first_name %>
     </div>
   </div>
 
@@ -32,8 +36,10 @@
       フリガナ
     </div>
     <div class="col-1">
+      <%= f.text_field :last_name_kana %>
     </div>
     <div class="col-1">
+      <%= f.text_field :first_name_kana %>
     </div>
   </div>
 
@@ -42,6 +48,7 @@
       郵便番号
     </div>
     <div class="col-1">
+      <%= f.text_field :postal_code %>
     </div>
   </div>
 
@@ -50,6 +57,7 @@
       住所
     </div>
     <div class="col-1">
+      <%= f.text_area :address %>
     </div>
   </div>
 
@@ -58,6 +66,7 @@
       電話番号
     </div>
     <div class="col-1">
+       <%= f.text_field :telephone_number %>
     </div>
   </div>
 
@@ -66,6 +75,7 @@
       メールアドレス
     </div>
     <div class="col-1">
+      <%= f.text_field :email %>
     </div>
   </div>
 
@@ -74,6 +84,7 @@
       会員ステータス
     </div>
     <div class="col-1">
+      <%= f.text_field :is_deleted %>
     </div>
   </div>
 
@@ -84,5 +95,6 @@
         <!-- end -->
       </div>
   </div>
+<% end %>
 
 </div>
