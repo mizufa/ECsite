@@ -6,11 +6,11 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @cart_item = Item.new #Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
+    @cart_item = CartItem.new #Viewへ渡すためのインスタンス変数に空のModelオブジェクトを生成する。
   end
 
   def create #カートに入れる機能用
-    @cart_item = Item.new
+    @cart_item = CartItem.new
     @cart_item.save
     redirect_to root_path
   end
