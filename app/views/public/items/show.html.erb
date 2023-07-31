@@ -14,7 +14,7 @@
     <span>
       <%= f.select :amount, *[1..10] %>
       <%= f.hidden_field :item_id, :value => @item.id %>
-      <!-- f.hidden_field :customer_id, :value => @customer.id -->
+      <%= f.hidden_field :customer_id, :value => @customer.id %>
     </span>
     <span>
       <%= f.submit 'カートに入れる' %>
