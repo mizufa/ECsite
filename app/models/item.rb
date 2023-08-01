@@ -10,4 +10,8 @@ class Item < ApplicationRecord
     end
     image
   end
+
+  def with_tax_purchase_price #消費税の設定
+    (self.purchase_price * 1.10).floor
+  end
 end
