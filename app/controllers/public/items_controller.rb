@@ -10,12 +10,6 @@ class Public::ItemsController < ApplicationController
     @customer = current_customer
   end
 
-  def create #カートに入れる機能用
-    @cart_item = CartItem.new
-    @cart_item.save
-    redirect_to root_path
-  end
-
   private
 
   def item_params
