@@ -15,6 +15,7 @@
     </div>
   </div>
 
+<!--カート内の商品情報-->
   <div class="row justify-content-center">
     <table class="table">
       <thead>
@@ -43,3 +44,29 @@
       <% end %>
     </table>
   </div>
+
+<!--「買い物を続ける」と合計金額-->
+  <div class="row">
+    <div class="col">
+      <%= link_to root_path, class: "btn btn-sm btn-primary" do %>
+      買い物を続ける
+      <% end %>
+    </div>
+    <div class="col">
+      <table class="table-sm">
+        <tbody>
+          <th>合計金額</th>
+          <td></td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<!--注文へ-->
+  <div class="row justify-content-center">
+      <%= link_to about_path, class: "btn btn-sm btn-success" do %>
+      情報入力に進む
+      <% end %>
+  </div>
+
+</div>
