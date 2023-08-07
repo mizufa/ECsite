@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
       delete '/customers/destroy_all' => 'cart_items#destroy_all'
     resources :orders, only: [:show, :index, :new]
+    post "/orders/confirm" => "orders#confirm"
   end
 
   namespace :admin do #権限付き、urlに権限名がつく。
