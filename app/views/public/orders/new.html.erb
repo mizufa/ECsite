@@ -14,18 +14,29 @@
   </div>
   <div class="row">
     <div>
-      <%= f.radio_button :payment, OrderHistory.payments.key(1) %>
+      <%= f.radio_button :address, OrderHistory.address %>
       <%= f.label :payment_credit_card, OrderHistory.payments_i18n[:credit_card] %>
     </div>
     <div>
       <%= f.radio_button :payment, OrderHistory.payments.key(2) %>
-      <%= f.label :payment_transfer, OrderHistory.payments_i18n[:transfer]%>
+      <%= f.label :payment_transfer, OrderHistory.payments_i18n[:transfer] %>
     </div>
   </div>
+
   <div class="row">
     <h5>お届け先</h5>
   </div>
   <div class="row">
+    <%= f.radio_button :payment, OrderHistory.payments.key(1) %>
+    <%= f.label :"ご自身の住所" %>
+  </div>
+  <div class="row">
+    <%= f.radio_button :payment, OrderHistory.payments.key(1) %>
+    <%= f.label :"登録済み住所から選択" %>
+  </div>
+  <div class="row">
+    <%= f.radio_button :payment, OrderHistory.payments.key(1) %>
+    <%= f.label :"新しいお届け先" %>
   </div>
   <% end %>
 
