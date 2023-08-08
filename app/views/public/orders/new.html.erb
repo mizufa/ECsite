@@ -8,13 +8,13 @@
     </div>
   </div>
 
-  <%= form_with model: OrderHistory, url: '/orders/confirm' do |f| %>
+  <%= form_with model: OrderHistory, url: '/orders/confirm',method: :post do |f| %>
   <div class="row">
     <h5>支払方法</h5>
   </div>
   <div class="row">
     <div>
-      <%= f.radio_button :address, OrderHistory.address %>
+      <%= f.radio_button :payment, OrderHistory.payments.key(1) %>
       <%= f.label :payment_credit_card, OrderHistory.payments_i18n[:credit_card] %>
     </div>
     <div>
@@ -27,16 +27,25 @@
     <h5>お届け先</h5>
   </div>
   <div class="row">
-    <%= f.radio_button :payment, OrderHistory.payments.key(1) %>
+    <%= f.radio_button :address, OrderHistory.address %>
     <%= f.label :"ご自身の住所" %>
+    <%= f.current_customer.address %>
   </div>
   <div class="row">
-    <%= f.radio_button :payment, OrderHistory.payments.key(1) %>
+    <%= f.radio_button :payment, OrderHistory.address %>
     <%= f.label :"登録済み住所から選択" %>
+    <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :name) %>
   </div>
   <div class="row">
-    <%= f.radio_button :payment, OrderHistory.payments.key(1) %>
+    <%= f.radio_button :payment, OrderHistory.address %>
     <%= f.label :"新しいお届け先" %>
+    郵便番号（ハイフンなし）<%= f.text_field :postal_code %>
+    住所<%= f.text_field :address %>
+    宛名<%= f.text_field :name %>
+  </div>
+
+  <div class="row justify-content-center">
+    <%= f.submit '確認画面へ進む', class: 'btn btn-success' %>
   </div>
   <% end %>
 
