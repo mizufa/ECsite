@@ -4,6 +4,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = OrderHistory.new
+    @customer = current_customer
   end
 
   def confirm
