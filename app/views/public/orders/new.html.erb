@@ -6,7 +6,7 @@
     <h5><strong>注文情報入力</strong></h5>
   </div>
 
-  <%= form_with model: @order, url: '/orders/confirm',method: :post do |f| %>
+  <%= form_with model: @order, url: '/orders/confirm', method: :post do |f| %>
   <div class="row">
     <h5>支払方法</h5>
   </div>
@@ -26,17 +26,17 @@
   </div>
   <div class="row">
     <div>
-      <%= f.radio_button :address, "address" %>
+      <%= f.radio_button :address, [@customer.address]  %>
       <%= f.label :"ご自身の住所" %>
     </div>
     <div class="col-2"><%= @customer.address %></div>
   </div>
   <div class="row">
     <div>
-      <%= f.radio_button :address, "address" %>
+      <%= f.radio_button :address, [@customer.address] %>
       <%= f.label :"登録済み住所から選択" %>
     </div>
-    <div class="col-2"><%= f.select :address,[@customer.address] %></div>
+    <div class="col-2"><%= f.select :address, [@customer.address] %></div>
   </div>
   <div class="row">
     <div>
@@ -58,6 +58,7 @@
   </div>
 
   <div class="row justify-content-center">
+    <%= f.hidden_field :customer_id, :value => @customer.id %>
     <%= f.submit '確認画面へ進む', class: 'btn btn-success' %>
   </div>
   <% end %>

@@ -1,8 +1,53 @@
 <div class="container">
-  <div class="row justify-content-between">
+  <div class="row">
     <div class="col-2">
       <h5>注文情報確認</h5>
     </div>
   </div>
+
+<div class="row">
+  <div class="col">
+
+    <table class="table-sm">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <% @cart_items.each do |cart_item| %>
+      <tbody>
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.purchase_price %></td>
+          <td><%= cart_item.amount %></td>
+          <td><%= cart_item.subtotal %></td>
+        </tr>
+      </tbody>
+      <% end %>
+
+    </table>
+  </div>
+  <div class="col">
+    <table class="table-sm">
+      <tbody>
+        <tr>
+          <th>送料</th>
+          <td>800円</td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td><!-- total --></td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
   </div>

@@ -3,17 +3,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def new
-    @order = OrderHistory.new
+    @order = current_customer.order_historys.new
     @customer = current_customer
+    #binding.pry
   end
-  
-  def create #注文確定
+
+  def create #注文確定処理
   end
 
   def confirm #注文情報確認画面
-    order = OrderHistory.new(order_history_params)
-    order.save
-    redirect_to orders_confirm_path
+    @order = current_customer.order_historys.new(order_history_params)
+    @cart_items = current_customer.cart_items.all
+    @total = 0
   end
 
   def completion #注文完了画面
