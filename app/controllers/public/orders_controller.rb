@@ -15,6 +15,8 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.order_historys.new(order_history_params)
     @cart_items = current_customer.cart_items.all
     @total = 0
+    @request = 0
+    @postage = 800
   end
 
   def completion #注文完了画面
