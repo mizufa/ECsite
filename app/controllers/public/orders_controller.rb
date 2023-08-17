@@ -17,6 +17,11 @@ class Public::OrdersController < ApplicationController
     @total = 0
     @request = 0
     @postage = 800
+    if params[:order_history][:select_address] == "0"
+      @order.address = current_customer.address
+      @order.postal_code = current_customer.postal_code
+      @order.name = current_customer.last_name + current_customer.first_name
+    end
   end
 
   def completion #注文完了画面

@@ -26,21 +26,15 @@
   </div>
   <div class="row">
     <div>
-      <%= f.radio_button :address, @customer.address %>
+      <%= f.radio_button :select_address, "0" %>
       <%= f.label :"ご自身の住所" %>
     </div>
     <div class="col-2"><%= @customer.address %></div>
   </div>
   <div class="row">
-    <div>
-      <%= f.radio_button :address, [@customer.address] %>
-      <%= f.label :"登録済み住所から選択" %>
-    </div>
-    <div class="col-2"><%= f.select :address, [@customer.address] %></div>
-  </div>
   <div class="row">
     <div>
-      <%= f.radio_button :address, "address" %>
+      <%= f.radio_button :select_address, "1" %>
       <%= f.label :"新しいお届け先" %>
     </div>
   </div>
