@@ -38,12 +38,12 @@
           <tr>
             <% @cart_items.each do |cart_item| %>
             <th>商品合計</th>
-            <td><%= @total += cart_item.subtotal %></td>
+            <td><%= @total += cart_item.subtotal %></td> <!--小計を入れる-->
             <% end %>
           </tr>
           <tr>
             <th>請求金額</th>
-            <td><%= @request += @postage + @total %></td>
+            <td><%= @request += @postage + @total %></td> <!--「送料+小計」を入れる-->
           </tr>
         </tbody>
       </table>
@@ -66,12 +66,21 @@
        <%= @order.postal_code %>
       <%= @order.address %>
       <%= @order.name %>
-     
+
     </div>
   </div>
 
     <div class="row justify-content-center">
-    <!-- f.submit '注文を確定する', class: 'btn btn-success' -->
+      <%= form_with model: @order, url: '/orders', method: :post do |f| %>
+        <%= f.hidden_field :customer_id, :value => @order.customer.id %>
+        <%= f.hidden_field :name, :value => @order.name %>
+        <%= f.hidden_field :address, :value => @order.address %>
+        <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+        <%= f.hidden_field :payment, :value => @order.payment %>
+        <%= f.hidden_field :item_total, :value => @request %>
+        <%= f.hidden_field :postage, :value => @postage %>
+        <%= f.submit '注文を確定する', class: 'btn btn-success' %>
+      <% end %>
   </div>
 
 </div>

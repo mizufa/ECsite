@@ -9,6 +9,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def create #注文確定処理
+    cart_item = OrderDetail.new(order_detail_params) #カート内商品のパラメータ取得
+    
+    order = current_customer.order_historys.new(order_history_params) #パラメータの取得
+    order.item_total = @request
+    order.postage = @postage
+    order.save
+    redirect_to orders_completion_path #注文完了画面へ
   end
 
   def confirm #注文情報確認画面
@@ -34,5 +41,9 @@ class Public::OrdersController < ApplicationController
 
   def order_history_params
     params.require(:order_history).permit(:customer_id, :name, :address, :postal_code, :payment, :item_total, :postage)
+  end
+
+  def order_detail_params
+    params.require(:order_detail).permit(:item_id, :order_history_id, :purchase_price, :amount)
   end
 end
