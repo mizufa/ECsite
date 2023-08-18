@@ -9,9 +9,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def create #注文確定処理
-    cart_item = OrderDetail.new(order_detail_params) #カート内商品のパラメータ取得
-    
-    order = current_customer.order_historys.new(order_history_params) #パラメータの取得
+    current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
+      cart_item = OrderDetail.new(order_detail_params) #カート内商品のパラメータ取得
+      #cart_item = CartdItem.new #カート内を初期化
+      cart_item.item_id = cart_items.item_id
+      cart_item.amount = cart_items.amount
+      cart_item.purchase_price = (cart_items.items.purchase_price*1.10).floor #税込にする
+      cart_item.order_history_id = @order.id #注文idを注文商品に紐付け
+      cart_item.save
+    end
+    current_customer.cart_items.destroy_all #カートの中身を削除
+
+    order = current_customer.order_historys.new(order_history_params) #注文詳細を保存 #パラメータの取得
     order.item_total = @request
     order.postage = @postage
     order.save
