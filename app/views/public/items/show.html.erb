@@ -8,7 +8,7 @@
     <div class="col">
       <p><%= @item.name %></p>
       <p><%= @item.introduction %></p>
-      <p>￥<%= @item.purchase_price %>(税込)</p>
+      <p>￥<%= @item.with_tax_purchase_price %>(税込)</p>
 
     <%= form_with model: @cart_item, url: '/cart_items', method: :post do |f| %>
     <span>
