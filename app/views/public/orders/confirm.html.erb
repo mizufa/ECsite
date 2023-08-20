@@ -35,12 +35,17 @@
             <th>送料</th>
             <td><%= @postage %></td>
           </tr>
+
           <tr>
-            <% @cart_items.each do |cart_item| %>
             <th>商品合計</th>
-            <td><%= @total += cart_item.subtotal %></td> <!--小計を入れる-->
-            <% end %>
+            <td><!--小計を入れる-->
+              <% @cart_items.each do |cart_item| %>
+                <% @total += cart_item.subtotal %>
+              <% end %>
+              <%= @total %>
+            </td>
           </tr>
+
           <tr>
             <th>請求金額</th>
             <td><%= @request += @postage + @total %></td> <!--「送料+小計」を入れる-->
@@ -79,6 +84,7 @@
         <%= f.hidden_field :payment, :value => @order.payment %>
         <%= f.hidden_field :item_total, :value => @request %>
         <%= f.hidden_field :postage, :value => @postage %>
+        <%= f.hidden_field :item_total, :value => @total %>
         <%= f.submit '注文を確定する', class: 'btn btn-success' %>
       <% end %>
   </div>

@@ -40,7 +40,7 @@
           </td>
           <td><%= cart_item.subtotal %></td>
           <td>
-            <%= link_to cart_item_path(cart_item.item.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" do %>
+            <%= link_to cart_item_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" do %>
             削除する
             <% end %>
           </td>
@@ -64,8 +64,8 @@
           <td>
             <% @cart_item.each do |cart_item| %>
               <% @total = @total + cart_item.subtotal %>
-              <%= @total %>
             <% end %>
+            <%= @total %>
           </td>
         </tbody>
       </table>
