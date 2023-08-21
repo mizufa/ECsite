@@ -11,18 +11,14 @@ class Public::OrdersController < ApplicationController
   def create #注文確定処理
     #order_historyモデルに注文（支払い方法、お届け先、請求金額に送料を合わせた合計金額）を保存する
     order_history = current_customer.order_historys.new(order_history_params) #パラメータの取得
-    order_history.payment = @order.payment
-    order_history.address = @order.address
-    order_history.item_total = @total
     order_history.save
 
   #OrderDetailモデルにカート内商品の情報を保存する
     current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
-      order_detail = OrderDetail.new
+      order_detail = order_history.order_details.new
       order_detail.item_id = cart_item.item_id
       order_detail.amount = cart_item.amount
       order_detail.purchase_price = cart_item.item.with_tax_purchase_price
-      order_detail.order_history_id = @order.id #注文idを注文商品に紐付け
       order_detail.save
     end
     current_customer.cart_items.destroy_all #カートの中身を削除
