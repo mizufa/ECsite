@@ -25,7 +25,6 @@ Rails.application.routes.draw do
     get "/orders/completion" => "orders#completion"
     resources :orders, only: [:show, :index, :new]
     post "/orders/confirm" => "orders#confirm"
-    
     post "/orders" => "orders#create"
   end
 

@@ -42,7 +42,7 @@ class Public::OrdersController < ApplicationController
   def completion #注文完了画面
   end
 
-  def index
+  def index #注文履歴一覧
   end
 
   private
