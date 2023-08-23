@@ -1,9 +1,10 @@
-<h1>Admin::Orders#index</h1>
+<h1>Admin::Homes#top</h1>
+<p>Find me in app/views/admin/homes/top.html.erb</p>
 
-<div class="container">
+<div class="container"><!--管理者トップページ-->
   <div class="row justify-content-between">
     <div class="col-2">
-      <h5><strong>注文履歴一覧</strong></h5><!--管理者トップページ-->
+      <h5><strong>注文履歴一覧</strong></h5>
     </div>
   </div>
 
@@ -19,9 +20,9 @@
       <tbody>
         <%= @orders.each do |order| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= order.created_at %></td>
+          <td><%= order.name %></td>
+          <td>order.amount</td>
         </tr>
         <% end %>
       </tbody>
