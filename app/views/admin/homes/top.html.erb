@@ -18,11 +18,13 @@
         </tr>
       </thead>
       <tbody>
-        <%= @orders.each do |order| %>
+        <% @orders.each do |order| %>
+        <% amount = 0 %>
+        <%= order.order_details.amount %>
         <tr>
           <td><%= order.created_at %></td>
           <td><%= order.name %></td>
-          <td>order.amount</td>
+          <td><%= amount %></td>
         </tr>
         <% end %>
       </tbody>

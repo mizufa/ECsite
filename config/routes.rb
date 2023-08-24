@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do #権限付き、urlに権限名がつく。
-    root to: "admin/homes#top"
+    root to: "homes#top"
     resources :customers
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :orders, only: [:show, :index]
