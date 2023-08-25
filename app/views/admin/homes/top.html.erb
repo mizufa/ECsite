@@ -12,7 +12,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th>購入日時</th>
+          <th>
+            購入日時
+          </th>
           <th>購入者</th>
           <th>注文個数</th>
         </tr>
@@ -20,11 +22,15 @@
       <tbody>
         <% @orders.each do |order| %>
         <% amount = 0 %>
-        <%= order.order_details.amount %>
         <tr>
           <td><%= order.created_at %></td>
           <td><%= order.name %></td>
-          <td><%= amount %></td>
+          <td>
+            <% @details.each do |detail| %>
+            <% amount += detail.amount %>
+            <%end%>
+            <%= amount %>
+          </td>
         </tr>
         <% end %>
       </tbody>
