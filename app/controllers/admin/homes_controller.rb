@@ -1,7 +1,6 @@
 class Admin::HomesController < ApplicationController
 
   def top #注文履歴一覧
-    @orders = OrderHistory.all
-    @details = OrderDetail.all
+    @orders = OrderHistory.page(params[:page])
   end
 end
