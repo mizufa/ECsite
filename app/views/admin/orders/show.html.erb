@@ -17,33 +17,66 @@
 
   <div class="row">
     <div class="col-1"><strong>注文日</strong></div>
-    <div class="col-2"></div>
+    <div class="col-2"><%=  @order.created_at.strftime('%Y/%m/%d') %></div>
   </div>
   <div class="row">
     <div class="col-1"><strong>配送先</strong></div>
-    <div class="col-2"></div>
+    <div class="col-2"><%= @order.address %></div>
   </div>
   <div class="row">
     <div class="col-1"><strong>支払方法</strong></div>
-    <div class="col-2"></div>
+    <div class="col-2"><%= @order.payment_i18n %></div>
   </div>
 
   <div class="row">
     <div class="col">
-      <table class="table"></table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <% @order.order_details.each do |details| %>
+        <tbody>
+          <tr>
+            <td><%= details.item.name %></td>
+            <td><%= details.item.with_tax_purchase_price %></td>
+            <td><%= details.amount %></td>
+            <td><%= details.subtotal %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
     </div>
+
     <div class="col">
         <div>
           <div class="col"><strong>商品合計</strong></div>
-          <div class="col"></div>
+          <div class="col">
+            <% total = 0 %>
+            <% @order.order_details.each do |details| %>
+              <% total += details.subtotal %>
+            <% end %>
+            <%= total %>
+          </div>
         </div>
         <div>
           <div class="col"><strong>送料</strong></div>
-          <div class="col"></div>
+          <div class="col"><%= @postage %></div>
         </div>
         <div>
           <div class="col"><strong>請求金額合計</strong></div>
-          <div class="col"></div>
+          <div class="col">
+            <% total = 0 %>
+            <% @order.order_details.each do |details| %>
+              <% total += details.subtotal %>
+            <% end %>
+            <% total += @postage %>
+            <%= total %>
+          </div>
         </div>
     </div>
   </div>
