@@ -39,13 +39,13 @@
             <th>小計</th>
           </tr>
         </thead>
-        <% @order.order_details.each do |details| %>
+        <% @order.order_details.each do |detail| %>
         <tbody>
           <tr>
-            <td><%= details.item.name %></td>
-            <td><%= details.item.with_tax_purchase_price %></td>
-            <td><%= details.amount %></td>
-            <td><%= details.subtotal %></td>
+            <td><%= detail.item.name %></td>
+            <td><%= detail.item.with_tax_purchase_price %></td>
+            <td><%= detail.amount %></td>
+            <td><%= detail.subtotal %></td>
           </tr>
         </tbody>
         <% end %>
@@ -57,8 +57,8 @@
           <div class="col"><strong>商品合計</strong></div>
           <div class="col">
             <% total = 0 %>
-            <% @order.order_details.each do |details| %>
-              <% total += details.subtotal %>
+            <% @order.order_details.each do |detail| %>
+              <% total += detail.subtotal %>
             <% end %>
             <%= total %>
           </div>
@@ -71,8 +71,8 @@
           <div class="col"><strong>請求金額合計</strong></div>
           <div class="col">
             <% total = 0 %>
-            <% @order.order_details.each do |details| %>
-              <% total += details.subtotal %>
+            <% @order.order_details.each do |detail| %>
+              <% total += detail.subtotal %>
             <% end %>
             <% total += @postage %>
             <%= total %>
@@ -81,10 +81,3 @@
     </div>
   </div>
  </div>
-
-
-
-
-  <div class="row">
-
-  </div>

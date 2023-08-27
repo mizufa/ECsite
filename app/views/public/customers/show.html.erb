@@ -41,13 +41,12 @@
   </div>
 
   <div class="row">
-    <div class="col-1">配送先</div>
-    <div class="col-2">一覧を見る</div>
-  </div>
-
-  <div class="row">
     <div class="col-1">注文履歴</div>
-    <div class="col-2">一覧を見る</div>
+    <div class="col-2">
+      <%= link_to orders_path do %>
+        一覧を見る
+      <% end %>
+    </div>
   </div>
 
 

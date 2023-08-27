@@ -1,5 +1,13 @@
 class Public::OrdersController < ApplicationController
-  def show
+  def index #注文履歴一覧
+    @order = current_customer.order_historys.all
+  end
+
+  def show #注文履歴詳細
+  @order_id = current_customer.order_historys.find(params[:id])
+  @order = current_customer.order_historys.all
+  @detail = OrderDetail.find(params[:id])
+  @postage = 800 #送料
   end
 
   def new
@@ -31,7 +39,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @total = 0
     @request = 0
-    @postage = 800
+    @postage = 800 #送料
     if params[:order_history][:select_address] == "0"
       @order.address = current_customer.address
       @order.postal_code = current_customer.postal_code
@@ -40,9 +48,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def completion #注文完了画面
-  end
-
-  def index #注文履歴一覧
   end
 
   private
