@@ -15,15 +15,15 @@
     <table class="table table-bordered">
       <tr>
         <th class="col-2">氏名</th>
-        <td class="col-6"><%= @customer.last_name %><%= @customer.first_name %></td>
+        <td class="col-6"><%= @customer.last_name %> <%= @customer.first_name %></td>
       </tr>
       <tr>
         <th>カナ</th>
-        <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+        <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
       </tr>
       <tr>
         <th>郵便番号</th>
-        <td><%= @customer.postal_code %></td>
+        <td>〒<%= @customer.postal_code %></td>
       </tr>
       <tr>
         <th>住所</th>

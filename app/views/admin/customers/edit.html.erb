@@ -11,7 +11,7 @@
 
 <%= form_with model: @customer, url: "/admin/customers/#{@customer.id}", method: :patch do |f| %>
   <div class="row">
-    <div class="col-1">
+    <div class="col-2">
       会員ID
     </div>
     <div class="col-1">
@@ -20,7 +20,7 @@
   </div>
 
   <div class="row">
-    <div class="col-1">
+    <div class="col-2">
       氏名
     </div>
     <div class="col-1">
@@ -32,7 +32,7 @@
   </div>
 
   <div class="row">
-    <div class="col-1">
+    <div class="col-2">
       フリガナ
     </div>
     <div class="col-1">
@@ -44,7 +44,7 @@
   </div>
 
   <div class="row">
-    <div class="col-1">
+    <div class="col-2">
       郵便番号
     </div>
     <div class="col-1">
@@ -53,7 +53,7 @@
   </div>
 
   <div class="row">
-    <div class="col-1">
+    <div class="col-2">
       住所
     </div>
     <div class="col-1">
@@ -62,7 +62,7 @@
   </div>
 
   <div class="row">
-    <div class="col-1">
+    <div class="col-2">
       電話番号
     </div>
     <div class="col-1">
@@ -83,8 +83,9 @@
     <div class="col-2">
       会員ステータス
     </div>
-    <div class="col-1">
-      <%= f.text_field :is_deleted %>
+    <div class="col-2">
+      <%= f.radio_button :is_deleted, "false" %><%= f.label :is_deleted_false, "有効" %>
+      <%= f.radio_button :is_deleted, "true" %><%= f.label :is_deleted_true, "退会" %>
     </div>
   </div>
 

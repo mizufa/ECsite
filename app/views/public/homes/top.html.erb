@@ -15,22 +15,15 @@
       <h3>新着商品</h3>
     </div>
   </div>
-  <div class="row">
-      <div class="col-sm-3">
-          商品名<br>
-          ¥0,000
-      </div>
-      <div class="col-sm-3">
-          商品名<br>
-          ¥0,000
-      </div>
-      <div class="col-sm-3">
-          商品名<br>
-          ¥0,000
-      </div>
-      <div class="col-sm-3">
-          商品名<br>
-          ¥0,000
-      </div>
+  <div class="row justify-content-center">
+  <% @items.each do |item| %>
+    <%= link_to item_path(item.id) do %>
+    <div class="col">
+      <%= image_tag item.get_image %><br>
+      <%= item.name %><br>
+      ¥<%= item.purchase_price %>
+    </div>
+    <% end %>
+  <% end %>
   </div>
 </div>
