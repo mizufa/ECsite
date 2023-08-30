@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
   def show #注文履歴詳細
   @order_id = current_customer.order_historys.find(params[:id])
   @order = current_customer.order_historys.all
-  @detail = OrderDetail.find(params[:id])
+  @history = OrderHistory.find(params[:id])
   @postage = 800 #送料
   end
 
