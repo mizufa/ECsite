@@ -68,15 +68,13 @@
           </tr>
         </thead>
         <tbody>
-          <% @order.each do |order| %>
-            <% order.order_details.each do |detail| %>
+          <% @history.order_details.each do |order| %>
               <tr>
-                <td><%= detail.item.name %></td>
-                <td><%= detail.purchase_price %></td>
-                <td><%= detail.amount %></td>
-                <td><%= detail.subtotal %></td>
+                <td><%= order.item.name %></td>
+                <td><%= order.purchase_price %></td>
+                <td><%= order.amount %></td>
+                <td><%= order.subtotal %></td>
               </tr>
-            <% end %>
           <% end %>
         </tbody>
       </table>

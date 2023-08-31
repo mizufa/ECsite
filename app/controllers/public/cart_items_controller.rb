@@ -8,7 +8,7 @@ class Public::CartItemsController < ApplicationController
   def create
      @cart_item = current_customer.cart_items.new(cart_item_params)
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-      cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]) #(item_id: params[:cart_item][:item_id])が検索条件で、カートアイテムのレコードが値として入る
+      cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]) #(item_id: params[:cart_item][:item_id])が検索条件のカートアイテムのレコードが値として入る
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.save
       redirect_to cart_items_path

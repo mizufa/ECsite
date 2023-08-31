@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :cart_item_state, only: [:new]
+
   def index #注文履歴一覧
     @order = current_customer.order_historys.all
   end
@@ -6,14 +8,20 @@ class Public::OrdersController < ApplicationController
   def show #注文履歴詳細
   @order_id = current_customer.order_historys.find(params[:id])
   @order = current_customer.order_historys.all
-  @history = OrderHistory.find(params[:id])
   @postage = 800 #送料
+  end
+
+  def cart_item_state
+    @cart_item = current_customer.cart_items.all
+    if @cart_item.nil?
+      redirect_to cart_items_path
+    return if !@cart_item
+    end
   end
 
   def new
     @order = current_customer.order_historys.new
     @customer = current_customer
-    #binding.pry
   end
 
   def create #注文確定処理

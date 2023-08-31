@@ -15,12 +15,14 @@
       <h3>新着商品</h3>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row row-cols-4 justify-content-center">
   <% @items.each do |item| %>
     <div class="col">
-      <%= image_tag item.get_image %><br>
-      <%= item.name %><br>
-      ¥<%= item.purchase_price %>
+        <%= link_to item_path(item.id) do %>
+        <%= image_tag item.get_image %><br>
+        <%= item.name %><br>
+        ¥<%= item.purchase_price %>
+      <% end %>
     </div>
   <% end %>
   </div>
