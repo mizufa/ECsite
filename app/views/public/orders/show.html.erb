@@ -35,7 +35,7 @@
         <tbody>
           <tr>
             <th>商品合計</th>
-            <td><%= @history.item_total %></td>
+            <td><%= @order_id.item_total %></td>
           </tr>
           <tr>
             <th>配送料</th>
@@ -45,7 +45,7 @@
             <th>ご請求額</th>
             <td>
               <% total = 0 %>
-              <% total += @history.item_total %>
+              <% total += @order_id.item_total %>
               <% total += @postage %>
               <%= total %>
             </td>
@@ -68,7 +68,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @history.order_details.each do |order| %>
+          <% @order_id.order_details.each do |order| %>
               <tr>
                 <td><%= order.item.name %></td>
                 <td><%= order.purchase_price %></td>

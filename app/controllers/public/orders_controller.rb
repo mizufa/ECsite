@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
 
   def cart_item_state
     @cart_item = current_customer.cart_items.all
-    if @cart_item.nil?
+    if @cart_item.blank?
       redirect_to cart_items_path
     return if !@cart_item
     end
